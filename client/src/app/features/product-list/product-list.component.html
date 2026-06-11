@@ -29,14 +29,14 @@
               </div>
             </div>
           </td>
-          <td><span class="category-tag">{{ product.category }}</span></td>
-          <td class="price-val">{{ product.price | currency }}</td>
-          <td>
+          <td data-label="Category"><span class="category-tag">{{ product.category }}</span></td>
+          <td data-label="Price" class="price-val">{{ product.price | currency }}</td>
+          <td data-label="Stock">
             <span class="stock-badge" [ngClass]="getStockClass(product.stock)">
               {{ product.stock }} units
             </span>
           </td>
-          <td class="date-val">{{ product.updatedAt | date:'shortDate' }}</td>
+          <td data-label="Updated" class="date-val">{{ product.updatedAt | date:'shortDate' }}</td>
           <td class="actions-cell" (click)="$event.stopPropagation()">
             <button class="btn-icon btn-edit" (click)="onEdit(product)" title="Edit">
               <img src="assets/icons/edit.svg" alt="Edit" />
