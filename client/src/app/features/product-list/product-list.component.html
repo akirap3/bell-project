@@ -1,0 +1,57 @@
+<div class="list-container glass">
+  <div class="list-header">
+    <h2>Inventory Items</h2>
+    <span class="badge">{{ productService.totalProducts() }} Items</span>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="modern-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Updated</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of productService.products(); trackBy: trackById"
+            [class.selected]="productService.selectedProduct()?.id === product.id"
+            (click)="onSelect(product)">
+          <td>
+            <div class="product-name-cell">
+              <span class="product-dot" [style.color]="getCategoryColor(product.category)"></span>
+              <div>
+                <div class="p-name">{{ product.name }}</div>
+                <div class="p-desc">{{ product.description | slice:0:40 }}{{ product.description.length > 40 ? '...' : '' }}</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="category-tag">{{ product.category }}</span></td>
+          <td class="price-val">{{ product.price | currency }}</td>
+          <td>
+            <span class="stock-badge" [ngClass]="getStockClass(product.stock)">
+              {{ product.stock }} units
+            </span>
+          </td>
+          <td class="date-val">{{ product.updatedAt | date:'shortDate' }}</td>
+          <td class="actions-cell" (click)="$event.stopPropagation()">
+            <button class="btn-icon btn-edit" (click)="onEdit(product)" title="Edit">
+              <img src="assets/icons/edit.svg" alt="Edit" />
+            </button>
+            <button class="btn-icon btn-delete" (click)="onDelete(product)" title="Delete">
+              <img src="assets/icons/delete.svg" alt="Delete" />
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="productService.products().length === 0">
+          <td colspan="6" class="empty-state">
+            <p>No products in inventory. Add one to get started.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

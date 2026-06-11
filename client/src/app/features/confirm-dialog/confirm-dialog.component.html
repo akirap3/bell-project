@@ -1,0 +1,23 @@
+<div class="modal-backdrop animate-fade-in" *ngIf="productService.confirmDeleteProduct() !== null" (click)="onCancel()">
+  <div class="modal-content glass animate-slide-up" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Delete Product</h2>
+      <button class="btn-close" (click)="onCancel()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="alert-icon-large">
+        <img src="assets/icons/error.svg" alt="Warning" />
+      </div>
+      <h3>Confirm Deletion</h3>
+      <p>Are you sure you want to permanently delete <strong>{{ productService.confirmDeleteProduct()?.name }}</strong> from inventory? This action cannot be undone.</p>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn-secondary" (click)="onCancel()">Cancel</button>
+      <button type="button" class="btn-danger" (click)="onConfirm()" [disabled]="productService.loading()">
+        {{ productService.loading() ? 'Deleting...' : 'Delete' }}
+      </button>
+    </div>
+  </div>
+</div>

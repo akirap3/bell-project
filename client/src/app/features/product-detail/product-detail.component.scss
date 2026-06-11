@@ -1,0 +1,221 @@
+.detail-container {
+  border-radius: 16px;
+  padding: 24px;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(25, 28, 41, 0.65);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .detail-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .category-tag {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 12px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+  }
+
+  .detail-header {
+    h2 {
+      margin: 0 0 12px 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .description {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+    }
+  }
+
+  .detail-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .metric-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .metric-label {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .metric-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+
+      &.price {
+        color: #f8fafc;
+        font-family: 'JetBrains Mono', monospace;
+      }
+    }
+
+    .stock-label {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #64748b;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px;
+
+      .progress-fill {
+        height: 100%;
+        border-radius: 3px;
+
+        &.stock-ok {
+          background: #22c55e;
+          box-shadow: 0 0 8px rgba(34, 197, 150, 0.4);
+        }
+
+        &.stock-low {
+          background: #eab308;
+          box-shadow: 0 0 8px rgba(234, 179, 8, 0.4);
+        }
+
+        &.stock-out {
+          background: #ef4444;
+          box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+        }
+      }
+    }
+  }
+
+  .stock-ok {
+    color: #4ade80;
+  }
+
+  .stock-low {
+    color: #facc15;
+  }
+
+  .stock-out {
+    color: #f87171;
+  }
+
+  .meta-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+
+      .meta-label {
+        color: #64748b;
+      }
+
+      .meta-value {
+        color: #cbd5e1;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .detail-actions {
+    display: flex;
+    gap: 12px;
+
+    .btn-primary {
+      flex: 1;
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+
+      .btn-icon-img {
+        width: 18px;
+        height: 18px;
+        filter: brightness(0) invert(1);
+      }
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
+      }
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+      }
+    }
+  }
+
+  .empty-detail {
+    text-align: center;
+    color: #64748b;
+    padding: 40px;
+
+    .empty-icon {
+      margin-bottom: 16px;
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}

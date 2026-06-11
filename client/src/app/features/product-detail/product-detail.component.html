@@ -1,0 +1,58 @@
+<div class="detail-container glass" [class.active]="productService.selectedProduct() !== null">
+  <div *ngIf="productService.selectedProduct() as product; else noSelection" class="detail-content animate-fade-in">
+    <div class="detail-header">
+      <span class="category-tag">{{ product.category }}</span>
+      <h2>{{ product.name }}</h2>
+      <p class="description">{{ product.description }}</p>
+    </div>
+
+    <div class="detail-body">
+      <div class="metric-card">
+        <span class="metric-label">Unit Price</span>
+        <span class="metric-value price">{{ product.price | currency }}</span>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-label">Current Stock</span>
+        <span class="metric-value" [ngClass]="getStockClass(product.stock)">
+          {{ product.stock }} <span class="stock-label">units</span>
+        </span>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="getStockPercentage(product.stock)" [ngClass]="getStockClass(product.stock)"></div>
+        </div>
+      </div>
+
+      <div class="meta-section">
+        <div class="meta-item">
+          <span class="meta-label">Product ID</span>
+          <span class="meta-value">#{{ product.id }}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Created At</span>
+          <span class="meta-value">{{ product.createdAt | date:'medium' }}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Last Updated</span>
+          <span class="meta-value">{{ product.updatedAt | date:'medium' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-actions">
+      <button class="btn-primary edit-btn" (click)="onEdit(product)">
+        <img src="assets/icons/edit.svg" alt="Edit" class="btn-icon-img" />
+        Edit Item
+      </button>
+      <button class="btn-secondary close-btn" (click)="onClose()">
+        Deselect
+      </button>
+    </div>
+  </div>
+
+  <ng-template #noSelection>
+    <div class="empty-detail animate-fade-in">
+      <img src="assets/icons/empty.svg" alt="Empty" class="empty-icon" />
+      <p>Select a product to view detailed properties, metrics, and history logs.</p>
+    </div>
+  </ng-template>
+</div>

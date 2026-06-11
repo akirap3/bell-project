@@ -1,0 +1,73 @@
+<div class="dashboard-container">
+  <!-- Top Navigation Header -->
+  <header class="dashboard-header glass">
+    <div class="header-logo">
+      <img src="assets/icons/logo.svg" alt="Logo" class="logo-icon" />
+      <div>
+        <h1>Bell Project</h1>
+        <p>Clean Inventory Control Panel</p>
+      </div>
+    </div>
+    <button class="btn-primary add-btn" (click)="onAddNew()">
+      <img src="assets/icons/plus.svg" alt="Add" />
+      Add Product
+    </button>
+  </header>
+
+  <!-- Error alert -->
+  <div class="error-alert glass animate-fade-in" *ngIf="productService.error() as err">
+    <img src="assets/icons/error.svg" alt="Error" class="alert-icon" />
+    <div class="alert-content">
+      <strong>API Sync Error:</strong>
+      <span>{{ err }}</span>
+    </div>
+    <button class="btn-alert-close" (click)="onClearError()">&times;</button>
+  </div>
+
+  <!-- Overview stats -->
+  <section class="stats-grid">
+    <div class="stat-card glass">
+      <div class="stat-icon-wrapper blue">
+        <img src="assets/icons/stats-products.svg" alt="Total Products" />
+      </div>
+      <div class="stat-info">
+        <span class="stat-title">Total Products</span>
+        <span class="stat-value">{{ productService.totalProducts() }}</span>
+      </div>
+    </div>
+
+    <div class="stat-card glass">
+      <div class="stat-icon-wrapper green">
+        <img src="assets/icons/stats-stock.svg" alt="Total Stock" />
+      </div>
+      <div class="stat-info">
+        <span class="stat-title">Total Stock Units</span>
+        <span class="stat-value">{{ productService.totalStock() }}</span>
+      </div>
+    </div>
+
+    <div class="stat-card glass">
+      <div class="stat-icon-wrapper purple">
+        <img src="assets/icons/stats-price.svg" alt="Avg Price" />
+      </div>
+      <div class="stat-info">
+        <span class="stat-title">Avg Unit Price</span>
+        <span class="stat-value">{{ productService.averagePrice() | currency }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Layout Workspace -->
+  <main class="workspace-grid">
+    <div class="workspace-left">
+      <app-product-list></app-product-list>
+    </div>
+    <div class="workspace-right">
+      <app-product-detail></app-product-detail>
+    </div>
+  </main>
+
+  <!-- Dialog component -->
+  <app-product-form></app-product-form>
+  <app-confirm-dialog></app-confirm-dialog>
+</div>

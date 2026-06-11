@@ -1,0 +1,39 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Re]leases/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bin]/
+[Ob]j/
+Log/
+Logs/
+
+# Visual Studio 2015/2017/2019/2022 cache/options directory
+.vs/
+
+# JetBrains Rider
+.idea/
+
+# Angular
+client/node_modules/
+client/dist/
+client/.angular/
+client/.history/
+client/src/assets/icons/*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+.env
