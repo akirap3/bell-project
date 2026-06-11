@@ -10,15 +10,25 @@ using BellProject.Domain.Repositories;
 
 namespace BellProject.Application.Services
 {
+    /// <summary>
+    /// Business logic service implementing Product operations.
+    /// Acts as an orchestrator between repository layer data models and application DTOs.
+    /// </summary>
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
 
+        /// <summary>
+        /// Constructor executing dependency injection injection of the product repository.
+        /// </summary>
         public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
+        /// <summary>
+        /// Retrieves a product by ID and maps it to a DTO.
+        /// </summary>
         public async Task<ProductDto?> GetProductByIdAsync(int id)
         {
             var product = await _productRepository.GetByIdAsync(id);
@@ -27,12 +37,18 @@ namespace BellProject.Application.Services
             return MapToDto(product);
         }
 
+        /// <summary>
+        /// Retrieves all products and maps them to a DTO list.
+        /// </summary>
         public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
         {
             var products = await _productRepository.ListAllAsync();
             return products.Select(MapToDto);
         }
 
+        /// <summary>
+        /// Creates a new Product entity, saves it to database, and returns the DTO.
+        /// </summary>
         public async Task<ProductDto> CreateProductAsync(CreateProductDto createDto)
         {
             var product = new Product
@@ -50,6 +66,9 @@ namespace BellProject.Application.Services
             return MapToDto(createdProduct);
         }
 
+        /// <summary>
+        /// Updates an existing Product entity. Throws NotFoundException if not found.
+        /// </summary>
         public async Task UpdateProductAsync(UpdateProductDto updateDto)
         {
             var existing = await _productRepository.GetByIdAsync(updateDto.Id);
@@ -68,6 +87,9 @@ namespace BellProject.Application.Services
             await _productRepository.UpdateAsync(existing);
         }
 
+        /// <summary>
+        /// Deletes a Product entity. Throws NotFoundException if not found.
+        /// </summary>
         public async Task DeleteProductAsync(int id)
         {
             var existing = await _productRepository.GetByIdAsync(id);
@@ -79,6 +101,9 @@ namespace BellProject.Application.Services
             await _productRepository.DeleteAsync(existing);
         }
 
+        /// <summary>
+        /// Utility helper to map a Product entity to a ProductDto.
+        /// </summary>
         private static ProductDto MapToDto(Product product)
         {
             return new ProductDto

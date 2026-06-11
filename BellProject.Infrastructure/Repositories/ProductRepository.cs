@@ -7,6 +7,9 @@ using BellProject.Infrastructure.Data;
 
 namespace BellProject.Infrastructure.Repositories
 {
+    /// <summary>
+    /// Repository class implementing data access operations for Product entities using EF Core.
+    /// </summary>
     public class ProductRepository : IProductRepository
     {
         private readonly ApplicationDbContext _context;
@@ -35,6 +38,7 @@ namespace BellProject.Infrastructure.Repositories
 
         public async Task UpdateAsync(Product entity)
         {
+            // Explicitly mark the entity state as Modified to force an UPDATE query
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }

@@ -4,17 +4,28 @@ using BellProject.Domain.Entities;
 
 namespace BellProject.Infrastructure.Data
 {
+    /// <summary>
+    /// Static class responsible for seeding initial values to the database.
+    /// Used for local development and demonstration purposes.
+    /// </summary>
     public static class DbInitializer
     {
+        /// <summary>
+        /// Instantiates database if needed and seeds default Product data if empty.
+        /// </summary>
+        /// <param name="context">Active DbContext instance.</param>
         public static void Initialize(ApplicationDbContext context)
         {
+            // Create database and schemas if they do not exist
             context.Database.EnsureCreated();
 
+            // Return early if database already contains data to prevent duplicate seeds
             if (context.Products.Any())
             {
                 return;
             }
 
+            // Create array of default demo products
             var products = new Product[]
             {
                 new() {
@@ -64,6 +75,7 @@ namespace BellProject.Infrastructure.Data
                 }
             };
 
+            // Stage and commit data to database
             context.Products.AddRange(products);
             context.SaveChanges();
         }
