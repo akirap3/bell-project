@@ -189,8 +189,11 @@
   }
 
   @media (max-width: 992px) {
+    min-height: auto;
+
     .workspace-grid {
       grid-template-columns: 1fr;
+      min-height: auto;
     }
   }
 
