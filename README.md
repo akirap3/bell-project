@@ -12,15 +12,15 @@ This project follows **Clean Architecture** (DDD-lite) principles to isolate the
 
 ```mermaid
 graph TD
-    API[BellProject.Api] --> Application[BellProject.Application]
-    API --> Infrastructure[BellProject.Infrastructure]
+    API["BellProject.Api"] --> Application["BellProject.Application"]
+    API --> Infrastructure["BellProject.Infrastructure"]
     Infrastructure --> Application
-    Application --> Domain[BellProject.Domain]
-    
-    style Domain fill:#f9f,stroke:#333,stroke-width:2px
-    style Application fill:#bbf,stroke:#333,stroke-width:2px
-    style Infrastructure fill:#ddf,stroke:#333,stroke-width:2px
-    style API fill:#dfd,stroke:#333,stroke-width:2px
+    Application --> Domain["BellProject.Domain"]
+
+    style Domain       fill:#7c3aed,color:#ffffff,stroke:#a78bfa,stroke-width:2px
+    style Application  fill:#1d4ed8,color:#ffffff,stroke:#60a5fa,stroke-width:2px
+    style Infrastructure fill:#0f766e,color:#ffffff,stroke:#34d399,stroke-width:2px
+    style API          fill:#b45309,color:#ffffff,stroke:#fbbf24,stroke-width:2px
 ```
 
 * **`BellProject.Domain`**: Core domain layer containing entities (`Product.cs`) and repository interfaces (`IProductRepository.cs`). It has **zero dependencies** on external libraries or other projects.
