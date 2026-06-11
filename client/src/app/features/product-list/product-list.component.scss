@@ -61,7 +61,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       color: #cbd5e1;
       font-size: 0.9rem;
-      transition: all 0.2s ease;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
     tbody tr {
@@ -209,12 +209,12 @@
     & {
       height: auto;
       overflow: visible;
+      border-radius: 16px;
     }
 
     .table-wrapper {
-      height: auto;
-      overflow-y: visible;
-      overflow-x: hidden;
+      flex: none;
+      overflow: visible;
     }
 
     .list-header {
