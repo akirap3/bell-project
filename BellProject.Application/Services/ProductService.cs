@@ -55,7 +55,7 @@ namespace BellProject.Application.Services
             var existing = await _productRepository.GetByIdAsync(updateDto.Id);
             if (existing == null)
             {
-                throw new NotFoundException($"Product with ID {updateDto.Id} was not found.");
+                throw new NotFoundException(nameof(Product), updateDto.Id);
             }
 
             existing.Name = updateDto.Name;
@@ -73,7 +73,7 @@ namespace BellProject.Application.Services
             var existing = await _productRepository.GetByIdAsync(id);
             if (existing == null)
             {
-                throw new NotFoundException($"Product with ID {id} was not found.");
+                throw new NotFoundException(nameof(Product), id);
             }
 
             await _productRepository.DeleteAsync(existing);
