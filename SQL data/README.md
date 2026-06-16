@@ -16,6 +16,13 @@ Before importing the data, drop the existing tables (if any) and create the tabl
 Run the following SQL commands in your database:
 
 ```sql
+-- Create database if it does not exist
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'BellBI')
+BEGIN
+    CREATE DATABASE BellBI;
+END;
+GO
+
 USE BellBI;
 GO
 
