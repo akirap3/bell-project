@@ -15,8 +15,8 @@ x86/
 [Aa]rm/
 [Aa]rm64/
 bld/
-[Bin]/
-[Ob]j/
+[Bb]in/
+[Oo]bj/
 Log/
 Logs/
 
@@ -25,6 +25,11 @@ Logs/
 
 # JetBrains Rider
 .idea/
+*.sln.imap
+*.sln.idea
+*.sln.iml
+_ReSharper.Caches/
+_ReSharper.*/
 
 # Angular
 client/node_modules/
